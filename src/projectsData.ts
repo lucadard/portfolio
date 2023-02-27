@@ -121,10 +121,10 @@ export const projects: { [key: string]: ProjectPageProps } = {
     },
     tech: ['typescript', 'react', 'nextjs', 'tailwind'],
     links: [
-      // {
-      //   caption: 'Repositorio',
-      //   link: ''
-      // },
+      {
+        caption: 'Repositorio',
+        link: 'https://github.com/lucadard/portfolio-next'
+      },
       {
         caption: 'Sitio web',
         link: 'https://simplif-ia.vercel.app/'

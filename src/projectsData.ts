@@ -16,7 +16,7 @@ export const projects: { [key: string]: ProjectPageProps } = {
       },
       {
         caption: 'Sitio web',
-        link: 'https://question-game-ml-lucadard.vercel.app/'
+        link: 'https://mercadogame.vercel.app/'
       }
     ]
   },
@@ -54,7 +54,7 @@ export const projects: { [key: string]: ProjectPageProps } = {
     links: [
       {
         caption: 'Repositorio',
-        link: 'https://github.com/lucadard/where-to-whatch-app'
+        link: 'https://github.com/lucadard/where-to-whatch'
       },
       {
         caption: 'Sitio web',
@@ -74,11 +74,11 @@ export const projects: { [key: string]: ProjectPageProps } = {
     links: [
       {
         caption: 'Repositorio Backend',
-        link: 'https://github.com/lucadard/ecommerce-coderhouse_server'
+        link: 'https://github.com/lucadard/codershop_backend'
       },
       {
         caption: 'Repositorio Frontend',
-        link: 'https://github.com/lucadard/ecommerce-coderhouse_frontend'
+        link: 'https://github.com/lucadard/codershop_frontend'
       },
       {
         caption: 'Sitio web',

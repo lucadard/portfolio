@@ -39,10 +39,6 @@ const ProjectPage = () => {
         que necesitaba en mi aplicacion y manejando errores dentro de la
         aplicacion.
       </p>
-      <p>
-        Decidí utilizar React Context para gestionar el estado y sincronizacion
-        entre los componentes.
-      </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
       <img
         src="/assets/projects/mercadogame_1.png"

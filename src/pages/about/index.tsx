@@ -70,7 +70,7 @@ const AboutPage = () => {
         variants={{
           show: { transition: { staggerChildren: 0.1, staggerDirection: 1 } }
         }}
-        className="px-10 md:px-32 pt-40 pb-20 overflow-hidden text-[18px]"
+        className="px-10 md:px-32 pt-40 overflow-hidden text-[18px]"
       >
         <div className="max-w-[700px] mx-auto">
           <div className="overflow-hidden lg:-translate-x-10">
@@ -89,9 +89,17 @@ const AboutPage = () => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center text-[24px] mt-10 mb-8">
-          <LinkArrow href="/work" label="Mis proyectos" />
-        </div>
+      </motion.div>
+      <motion.div
+        variants={{
+          exit: {
+            y: '200%',
+            opacity: 0
+          }
+        }}
+        className="flex justify-center text-[24px] mt-10 mb-24"
+      >
+        <LinkArrow href="/work" label="Mis proyectos" />
       </motion.div>
     </PageLayout>
   )

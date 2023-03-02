@@ -36,7 +36,7 @@ const WorkPage = () => {
         }}
         className="px-10 md:px-20 pt-20"
       >
-        <ol className="flex flex-col gap-10 my-20">
+        <ol className="flex flex-col gap-10 mt-20">
           {links.map(({ key, projectName, url, description }) => {
             return (
               <motion.li
@@ -80,9 +80,17 @@ const WorkPage = () => {
             )
           })}
         </ol>
-        <div className="flex justify-center text-[24px] mt-10 mb-24">
-          <LinkArrow href="/contact" label="Contacto" />
-        </div>
+      </motion.div>
+      <motion.div
+        variants={{
+          exit: {
+            y: '200%',
+            opacity: 0
+          }
+        }}
+        className="flex justify-center text-[24px] mt-10 mb-24"
+      >
+        <LinkArrow href="/contact" label="Contacto" />
       </motion.div>
     </PageLayout>
   )

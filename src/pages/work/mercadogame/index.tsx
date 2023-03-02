@@ -24,11 +24,6 @@ const ProjectPage = () => {
         <CoveredLink
           text={'Mercado Libre'}
           href={'https://developers.mercadolibre.com.ar/'}
-        />{' '}
-        utilizando{' '}
-        <CoveredLink
-          text={'Axios'}
-          href={'https://axios-http.com/docs/intro'}
         />
         .
       </p>

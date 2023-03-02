@@ -101,10 +101,10 @@ export const projects: { [key: string]: ProjectPageProps } = {
     },
     tech: ['typescript', 'react', 'nextjs', 'tailwind'],
     links: [
-      //   {
-      //     caption: 'Repositorio',
-      //     link: 'https://portfolio-next-lucadard.vercel.app/'
-      //   },
+      {
+        caption: 'Repositorio',
+        link: 'https://github.com/lucadard/portfolio'
+      },
       {
         caption: 'Sitio web',
         link: 'https://portfolio-next-lucadard.vercel.app/'
@@ -121,10 +121,10 @@ export const projects: { [key: string]: ProjectPageProps } = {
     },
     tech: ['typescript', 'react', 'nextjs', 'tailwind'],
     links: [
-      {
-        caption: 'Repositorio',
-        link: 'https://github.com/lucadard/portfolio-next'
-      },
+      // {
+      //   caption: 'Repositorio',
+      //   link: 'https://github.com/lucadard/portfolio-next'
+      // },
       {
         caption: 'Sitio web',
         link: 'https://simplif-ia.vercel.app/'

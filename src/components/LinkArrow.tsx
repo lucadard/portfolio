@@ -20,10 +20,6 @@ export default function LinkArrow({
       <motion.div
         animate="show"
         whileHover="showText"
-        exit={{
-          y: '50vh',
-          transition: { delay: 0 }
-        }}
         style={{
           transformOrigin: 'bottom',
           transitionDelay: '1s',

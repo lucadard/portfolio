@@ -27,8 +27,8 @@ const ProjectPage = () => {
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
       <video
-        src="/assets/projects/giphy_1.mp4"
-        className="w-full"
+        src="/assets/videos/giphy_1.mp4"
+        className="w-full shadow-lg shadow-black/20"
         autoPlay
         loop
         muted
@@ -37,8 +37,8 @@ const ProjectPage = () => {
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
 
       <video
-        src="/assets/projects/giphy_2.mp4"
-        className="w-full"
+        src="/assets/videos/giphy_2.mp4"
+        className="w-full shadow-lg shadow-black/20"
         autoPlay
         loop
         muted
@@ -47,8 +47,8 @@ const ProjectPage = () => {
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
 
       <video
-        src="/assets/projects/giphy_3.mp4"
-        className="w-full"
+        src="/assets/videos/giphy_3.mp4"
+        className="w-full shadow-lg shadow-black/20"
         autoPlay
         loop
         muted

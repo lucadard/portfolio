@@ -1,3 +1,4 @@
+import Button from '@/components/Button'
 import CoveredLink from '@/components/CoveredLink'
 import LinkArrow from '@/components/LinkArrow'
 import axios from 'axios'
@@ -8,60 +9,67 @@ import PageLayout from '../PageLayout'
 const favouriteTech = [
   { name: 'React', link: 'https://reactjs.org/' },
   { name: 'TypeScript', link: 'https://www.typescriptlang.org/' },
-  { name: 'NextJS', link: 'https://nextjs.org/' },
+  { name: 'Next.js', link: 'https://nextjs.org/' },
   { name: 'TailwindCSS', link: 'https://tailwindcss.com/' },
   { name: 'Node.js', link: 'https://nodejs.org/' }
 ]
-
-const variants = {
-  hide: {
-    y: '200%',
-    transition: { type: 'spring', stiffness: 20, duration: 0.5 }
-  },
-  exit: {
-    y: '200%',
-    transition: { type: 'spring', stiffness: 20, duration: 0.5 }
-  },
-  show: {
-    y: 0,
-    transition: { type: 'spring', mass: 0.8, stiffness: 40, duration: 1 }
-  }
-}
 
 const paragraphs = [
   <>
     Soy un desarrollador web especializado en{' '}
     <CoveredLink text={favouriteTech[0].name} href={favouriteTech[0].link} /> y
-    disfruto creando de aplicaciones web interactivas y dinámicas.
+    disfruto creando aplicaciones web interactivas y dinámicas.
   </>,
   <>
-    Comencé a estudiar desarrollo web cuando descubrí JavaScript y quedé
-    asombrado debido a su flexibilidad y a la capacidad que le brinda al
-    programador para abarcar todas las facetas del desarrollo web utilizando un
-    solo lenguaje. Algunas de mis tecnologías preferidas son{' '}
+    Me apasiona experimentar con nuevas herramientas y tecnologías, algunas de
+    mis preferidas son{' '}
     {favouriteTech.slice(1).map((item, i, { length: l }) => (
       <span key={item.name}>
         <CoveredLink text={item.name} href={item.link} />
         <span>{i !== l - 1 && ', '}</span>
       </span>
     ))}
-    .
+    . Mantenerme actualizado es fundamental para mí, ya que el desarrollo web
+    evoluciona constantemente.
   </>,
-  <>
-    Me encanta experimentar y aprender nuevas herramientas, entiendo que el
-    desarrollo web evoluciona constantemente y es fundamental mantenerse
-    actualizado.
-  </>,
-  <>
-    Te muestro más sobre mis estudios en mi{' '}
-    <CoveredLink text={'curriculum'} href={'/Luca_Dardenne_CV.pdf'} />.
-  </>,
-  <>
-    En la siguiente sección presento una selección de proyectos personales en
-    los cuales he puesto en práctica mis conocimientos y habilidades en el campo
-    del desarrollo web.
-  </>
+  <a href="/resume.pdf" target="_blank">
+    <Button>
+      <span className="whitespace-nowrap font-semibold">
+        Mira mi Curriculum!
+      </span>
+    </Button>
+  </a>
 ]
+const transition = { type: 'spring', mass: 0.1, stiffness: 50 }
+const paragraphVariants = {
+  hide: {
+    y: '200%',
+    transition
+  },
+  exit: {
+    y: '200%',
+    transition
+  },
+  show: {
+    y: 0,
+    transition: { ...transition, delay: 0.5 }
+  }
+}
+const arrowVariants = {
+  hide: {
+    opacity: 0,
+    y: 100
+  },
+  exit: {
+    y: '100%',
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', delay: 2, mass: 0.6 }
+  }
+}
 
 const AboutPage = () => {
   return (
@@ -70,34 +78,39 @@ const AboutPage = () => {
         variants={{
           show: { transition: { staggerChildren: 0.1, staggerDirection: 1 } }
         }}
-        className="px-10 md:px-32 pt-40 overflow-hidden text-[18px]"
+        className="px-10 md:px-20 pt-[200px] overflow-hidden"
       >
         <div className="max-w-[700px] mx-auto">
-          <div className="overflow-hidden lg:-translate-x-10">
+          <div className="overflow-hidden">
             <motion.h2
-              variants={variants}
-              className="text-5xl md:text-[72px] font-bold mb-12"
+              variants={paragraphVariants}
+              className="text-5xl md:text-6xl font-bold mb-12"
             >
-              Me gusta crear cosas para la web
+              Un poco acerca de mí
             </motion.h2>
           </div>
-          {paragraphs.map((paragraph, i) => (
-            <div className="overflow-hidden" key={i}>
-              <motion.p variants={variants} className="leading-8 mb-4 ">
-                {paragraph}
-              </motion.p>
-            </div>
-          ))}
+          <div className="relative">
+            <motion.div
+              className="absolute left-0 h-full w-[2px] -ml-5 md:-ml-10 bg-black dark:bg-white"
+              variants={paragraphVariants}
+            />
+            {paragraphs.map((paragraph, i) => (
+              <div className="overflow-hidden" key={i}>
+                <motion.p
+                  variants={paragraphVariants}
+                  className="leading-8 mb-4 "
+                >
+                  {paragraph}
+                </motion.p>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
       <motion.div
-        variants={{
-          exit: {
-            y: '200%',
-            opacity: 0
-          }
-        }}
-        className="flex justify-center text-[24px] mt-10 mb-24"
+        variants={arrowVariants}
+        transition={{ type: 'spring', mass: 0.6 }}
+        className="flex justify-center text-[24px] mt-10"
       >
         <LinkArrow href="/work" label="Mis proyectos" />
       </motion.div>

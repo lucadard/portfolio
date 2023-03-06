@@ -3,8 +3,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
 
-type Props = {}
-
 export const socials = [
   {
     name: 'Github',
@@ -17,27 +15,21 @@ export const socials = [
     link: 'https://www.linkedin.com/in/lucadardenne/'
   }
 ]
+const transition = { type: 'spring', mass: 0.1, stiffness: 50 }
 
-const Socials = (props: Props) => {
+const Socials = () => {
   const { setMouseHoverState, restoreMouseState } = useMouse()
 
   return (
     <motion.div
       variants={{
-        hide: {
-          opacity: 0,
-          y: '100%'
-        },
-        show: {
-          opacity: 1,
-
-          y: '20%'
-        }
+        hide: { opacity: 0, y: '100%' },
+        show: { opacity: 1, y: '20%' }
       }}
       initial="hide"
       animate="show"
-      exit="hide"
-      transition={{ type: 'spring', duration: 1, stiffness: 50 }}
+      // exit="hide"
+      transition={transition}
       className="z-[100] md:fixed md:h-52 md:w-[1px] w-[70vw] h-[1px] mb-20 md:mb-0 bottom-0 right-16 xl:right-20 self-end bg-black dark:bg-white"
     >
       <div className="flex md:flex-col md:ml-3 gap-4 md:w-6 justify-end px-5 md:px-0">

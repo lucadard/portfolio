@@ -6,10 +6,27 @@ import { useMouse } from '@/context/MouseContext'
 import { projects } from '../../projectsData'
 import LinkArrow from '@/components/LinkArrow'
 
-const listItem = {
+const itemVariants = {
   hide: { y: '-200%', opacity: 0 },
-  exit: { y: '-200%', opacity: 0 },
+  exit: { y: '200%', opacity: 0 },
   show: { y: 0, opacity: 1 }
+}
+const transition = { type: 'spring', mass: 0.1, stiffness: 60 }
+
+const arrowVariants = {
+  hide: {
+    opacity: 0,
+    y: 100
+  },
+  exit: {
+    y: '100%',
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', delay: 2, mass: 0.6 }
+  }
 }
 
 const links = Object.entries(projects).map(
@@ -27,26 +44,25 @@ const WorkPage = () => {
     <PageLayout title="Mis Proyectos">
       <motion.div
         variants={{
-          hide: { opacity: 0, transition: { staggerChildren: 0.1 } },
-          exit: { opacity: 0, transition: { staggerChildren: 0.1 } },
           show: {
-            opacity: 1,
-            transition: { staggerChildren: 0.03, delayChildren: 0.3 }
-          }
+            transition: {
+              staggerChildren: 0.1,
+              staggerDirection: 1,
+              delayChildren: 0.5
+            }
+          },
+          hide: { transition: { staggerChildren: 0.1, staggerDirection: 1 } },
+          exit: { transition: { staggerChildren: 0.1, staggerDirection: -1 } }
         }}
-        className="px-10 md:px-20 pt-20"
+        className="px-10 md:px-20 mt-[200px] overflow-hidden"
       >
-        <ol className="flex flex-col gap-10 mt-20">
+        <ol className="flex flex-col gap-10 w-full max-w-6xl mx-auto">
           {links.map(({ key, projectName, url, description }) => {
             return (
               <motion.li
                 key={key}
-                variants={listItem}
-                transition={{
-                  bounce: 0.1,
-                  duration: 0.8,
-                  type: 'spring'
-                }}
+                variants={itemVariants}
+                transition={transition}
               >
                 <Link
                   href={url}
@@ -66,7 +82,7 @@ const WorkPage = () => {
                             transition: { duration: 0.1, delay: 0 }
                           }
                         }}
-                        className="text-inherit font-bold text-4xl md:text-6xl lg:text-8xl uppercase"
+                        className="text-inherit font-bold text-4xl md:text-6xl lg:text-7xl uppercase"
                       >
                         {projectName}
                       </motion.p>
@@ -82,15 +98,11 @@ const WorkPage = () => {
         </ol>
       </motion.div>
       <motion.div
-        variants={{
-          exit: {
-            y: '200%',
-            opacity: 0
-          }
-        }}
-        className="flex justify-center text-[24px] mt-10 mb-24"
+        variants={arrowVariants}
+        transition={{ type: 'spring', mass: 0.6 }}
+        className="flex justify-center text-[24px] mt-10"
       >
-        <LinkArrow href="/contact" label="Contacto" />
+        <LinkArrow href="/contact" label="Mis proyectos" />
       </motion.div>
     </PageLayout>
   )

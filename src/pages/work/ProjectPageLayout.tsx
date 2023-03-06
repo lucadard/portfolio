@@ -42,6 +42,8 @@ const techStack: {
   mongodb: { url: '/assets/icons/mongodb.png', title: 'MongoDB' }
 }
 
+const transition = { type: 'spring', mass: 0.1, stiffness: 100 }
+
 const ProjectPageLayout = ({
   projectName,
   urls,
@@ -64,7 +66,7 @@ const ProjectPageLayout = ({
           <div className="flex gap-6 items-center flex-wrap">
             <motion.h3
               variants={variants[slideDirection]}
-              transition={{ type: 'spring', mass: 0.3 }}
+              transition={transition}
               className="uppercase text-4xl md:text-5xl font-bold lg:whitespace-nowrap"
             >
               {projectName}
@@ -86,7 +88,7 @@ const ProjectPageLayout = ({
                     whileHover={{
                       scale: 1.3
                     }}
-                    transition={{ type: 'spring', mass: 0.1, duration: 1 }}
+                    transition={transition}
                     src={techStack[key].url}
                     alt={techStack[key].title + ' icon.'}
                     className="h-full object-fit"
@@ -96,7 +98,7 @@ const ProjectPageLayout = ({
             </div>
             <motion.div
               variants={variants[slideDirection]}
-              transition={{ type: 'spring', mass: 0.1, duration: 1 }}
+              transition={transition}
               className="flex gap-4 flex-wrap"
             >
               {links.map(({ link, caption }) => (
@@ -111,7 +113,7 @@ const ProjectPageLayout = ({
                     whileHover={{
                       scale: 1.05
                     }}
-                    transition={{ type: 'spring', mass: 0.1, duration: 1 }}
+                    transition={transition}
                     className="h-10 rounded-sm shadow-md bg-apple-green text-white hover:text-black/80 transition-colors duration-200 font-semibold"
                   >
                     <p className="px-4 whitespace-nowrap">{caption}</p>
@@ -126,7 +128,7 @@ const ProjectPageLayout = ({
                 <motion.div
                   key={i}
                   variants={variants[slideDirection]}
-                  transition={{ type: 'spring', mass: 0.3 }}
+                  transition={transition}
                 >
                   {child}
                 </motion.div>

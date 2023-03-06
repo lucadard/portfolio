@@ -3,12 +3,14 @@ import { useSlideDirection } from '@/context/SlideDirectionContext'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import React from 'react'
-import CoveredText from '../CoveredText'
+import CoveredLink from '../CoveredLink'
 
 type Props = {
   nextProjectUrl?: string
   prevProjectUrl?: string
 }
+
+const transition = { type: 'spring', mass: 0.1, stiffness: 60 }
 
 const variants = {
   left: {
@@ -38,14 +40,14 @@ const WorkNavigate = ({ nextProjectUrl, prevProjectUrl }: Props) => {
         onMouseEnter={setMouseHoverState}
         onMouseLeave={restoreMouseState}
         variants={variants[slideDirection]}
-        transition={{ type: 'spring', mass: 0.3 }}
+        transition={transition}
         className="cursor-pointer text-left group"
         onClick={() => {
           setSlideDirection('right')
         }}
       >
         <Link href={!prevProjectUrl ? '/work' : prevProjectUrl} scroll={false}>
-          <CoveredText
+          <CoveredLink
             text={!prevProjectUrl ? 'Volver a proyectos' : 'Anterior proyecto'}
           />
         </Link>
@@ -57,11 +59,11 @@ const WorkNavigate = ({ nextProjectUrl, prevProjectUrl }: Props) => {
           onMouseEnter={setMouseHoverState}
           onMouseLeave={restoreMouseState}
           variants={variants[slideDirection]}
-          transition={{ type: 'spring', mass: 0.3 }}
+          transition={transition}
           className="cursor-pointer text-right group"
         >
           <Link href={nextProjectUrl} scroll={false}>
-            <CoveredText text="Siguiente proyecto" />
+            <CoveredLink text="Siguiente proyecto" />
           </Link>
         </motion.div>
       ) : null}

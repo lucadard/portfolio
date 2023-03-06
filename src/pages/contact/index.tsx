@@ -1,70 +1,73 @@
+import Button from '@/components/Button'
 import CoveredLink from '@/components/CoveredLink'
-import { socials } from '@/components/layout/Socials'
+import LinkArrow from '@/components/LinkArrow'
+import axios from 'axios'
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PageLayout from '../PageLayout'
 
-type Props = {}
-const variants = {
+const paragraphs = [
+  <>
+    Podés enviarme un{' '}
+    <CoveredLink text={'email'} href={'mailto:lucadardenne@hotmail.com'} />
+  </>,
+  <>
+    O encontrarme en{' '}
+    <CoveredLink
+      text={'LinkedIn'}
+      href={'https://www.linkedin.com/in/lucadardenne/'}
+    />{' '}
+    y <CoveredLink text={'Github'} href={'https://github.com/lucadard'} />.
+  </>
+]
+const transition = { type: 'spring', mass: 0.1, stiffness: 50 }
+const exitTransition = { type: 'spring', mass: 0.8, stiffness: 120 }
+const paragraphVariants = {
   hide: {
     y: '200%',
-    transition: { type: 'spring', stiffness: 20, duration: 0.5 }
+    transition
   },
   exit: {
     y: '200%',
-    transition: { type: 'spring', stiffness: 20, duration: 0.5 }
+    transition: exitTransition
   },
   show: {
     y: 0,
-    transition: { type: 'spring', mass: 0.8, stiffness: 40, duration: 1 }
+    transition: { ...transition, delay: 0.5 }
   }
 }
-const ContactPage = (props: Props) => {
+
+const ContactPage = () => {
   return (
-    <PageLayout title="Inicio">
+    <PageLayout title="Contacto">
       <motion.div
         variants={{
-          show: { transition: { staggerChildren: 0.5 } }
+          show: { transition: { staggerChildren: 0.1, staggerDirection: 1 } }
         }}
-        className="px-10 md:px-32 pt-20 md:pt-40 pb-20"
+        className="px-10 md:px-20 pt-[200px] overflow-hidden"
       >
-        <motion.div
-          variants={{
-            show: {
-              transition: { staggerChildren: 0.3, staggerDirection: -1 }
-            }
-          }}
-          className="flex flex-col gap-10 pt-10"
-        >
+        <div className="max-w-[700px] mx-auto">
           <div className="overflow-hidden">
-            <motion.h1
-              variants={variants}
-              className="text-6xl lg:text-8xl font-bold"
+            <motion.h2
+              variants={paragraphVariants}
+              className="text-5xl md:text-7xl font-bold mb-12"
             >
-              Te podés
-            </motion.h1>
+              Contactame!
+            </motion.h2>
           </div>
-          <div className="overflow-hidden text-xl">
-            <motion.p variants={variants} className="leading-8">
-              Contactar conmigo por{' '}
-              <CoveredLink
-                text={'email'}
-                href={'mailto:lucadardenne@hotmail.com'}
-                blank={false}
-              />
-              .
-              <br />
-              También podes encontrarme en redes:{' '}
-              {socials.map((item, i, { length: l }) => (
-                <span key={item.name}>
-                  <CoveredLink text={item.name} href={item.link} />
-                  <span>{i !== l - 1 && ', '}</span>
-                </span>
-              ))}
-              .
-            </motion.p>
+          <div className="relative">
+            {paragraphs.map((paragraph, i) => (
+              <div className="overflow-hidden" key={i}>
+                <motion.p
+                  variants={paragraphVariants}
+                  className="leading-8 mb-4 "
+                >
+                  {paragraph}
+                </motion.p>
+              </div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </PageLayout>
   )

@@ -35,6 +35,10 @@ const ProjectPage = () => {
         <CoveredLink text={'OpenAI'} href={'https://openai.com/api/'} /> para
         obtener las respuestas.
       </p>
+      <p>
+        <span className="underline text-lg font-bold">Nota</span>: Debido a que la web utiliza una
+        API de pago, no se encuentra en funcionamiento.
+      </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
       <ProjectImage
         src="/assets/images/simplifia_1.jpg"

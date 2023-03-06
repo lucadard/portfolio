@@ -13,6 +13,7 @@ import { SlideDirectionProvider } from '@/context/SlideDirectionContext'
 import Cursor from '@/components/Cursor'
 import Noise from '@/components/Noise'
 import PageLoader from './PageLoader'
+import Socials from '@/components/layout/Socials'
 
 const loaderDuration = 1.5 // in seconds
 

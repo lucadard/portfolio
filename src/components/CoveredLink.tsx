@@ -19,9 +19,7 @@ const CoveredLink = ({ href = undefined, text, blank = true }: Props) => {
       whileHover="hover"
       className="relative inline-block group"
     >
-      <span className="z-10 group-hover:text-white transition-colors duration-200">
-        {text}
-      </span>
+      <span className="z-10 group-hover:text-white transition-colors duration-100">{text}</span>
       <motion.span
         variants={{
           hide: { opacity: 0, height: 0 },

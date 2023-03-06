@@ -17,16 +17,7 @@ module.exports = {
         'apple-green': '#88992e'
       },
       fontFamily: {
-        default: ['Poppins', 'sans-serif'],
-        'roboto-mono': ['Roboto Mono'],
-        'ibm-mono': ['IBM Plex Mono']
-      },
-      backgroundImage: {
-        backgroundVideo: "url('/assets/background.gif')",
-        backgroundVideoLg: "url('/assets/background-lg.gif')"
-      },
-      '-webkit-text-stroke': {
-        hi: 'asdas'
+        default: ['Poppins', 'sans-serif']
       }
     }
   },

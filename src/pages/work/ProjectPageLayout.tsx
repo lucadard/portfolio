@@ -3,6 +3,7 @@ import { useMouse } from '@/context/MouseContext'
 import { useSlideDirection } from '@/context/SlideDirectionContext'
 import { ProjectPageProps, TechStackItems } from '@/types'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import PageLayout from '../PageLayout'
@@ -83,16 +84,22 @@ const ProjectPageLayout = ({
                   }`}
                   title={techStack[key].title}
                 >
-                  <motion.img
+                  <motion.div
                     variants={variants[slideDirection]}
                     whileHover={{
                       scale: 1.3
                     }}
                     transition={transition}
-                    src={techStack[key].url}
-                    alt={techStack[key].title + ' icon.'}
-                    className="h-full object-fit"
-                  />
+                    className="relative h-full aspect-square"
+                  >
+                    <Image
+                      src={techStack[key].url}
+                      alt={techStack[key].title + ' icon.'}
+                      fill
+                      sizes="24px"
+                      className="object-cover"
+                    />
+                  </motion.div>
                 </div>
               ))}
             </div>

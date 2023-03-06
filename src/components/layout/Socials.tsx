@@ -1,5 +1,6 @@
 import { useMouse } from '@/context/MouseContext'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -34,16 +35,23 @@ const Socials = () => {
     >
       <div className="flex md:flex-col md:ml-3 gap-4 md:w-6 justify-end px-5 md:px-0">
         {socials.map(({ name, link, icon_url }) => (
-          <Link
+          <a
             key={name}
             href={link}
+            aria-label={`Find me on ${name}`}
             target="_blank"
-            className="w-6 aspect-square py-3 md:py-0 flex items-center dark:invert dark:opacity-50"
+            className="py-3 md:py-0 flex items-center dark:invert dark:opacity-50"
             onMouseEnter={setMouseHoverState}
             onMouseLeave={restoreMouseState}
           >
-            <img className="cursor-pointer" src={icon_url} />
-          </Link>
+            <Image
+              className="cursor-pointer"
+              src={icon_url}
+              width={24}
+              height={24}
+              alt={`${name} logo`}
+            />
+          </a>
         ))}
       </div>
     </motion.div>

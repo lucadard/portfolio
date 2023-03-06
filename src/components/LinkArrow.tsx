@@ -30,7 +30,12 @@ export default function LinkArrow({
         onMouseEnter={setMouseHoverState}
         onMouseLeave={restoreMouseState}
       >
-        <Link href={href} scroll={false} className="groupp cursor-pointer">
+        <Link
+          href={href}
+          scroll={false}
+          className="cursor-pointer"
+          aria-label="To the next page"
+        >
           <motion.div
             variants={{ showText: { y: 10 } }}
             transition={{ type: 'spring', mass: 0.6 }}

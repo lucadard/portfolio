@@ -3,6 +3,7 @@ import CoveredLink from '@/components/CoveredLink'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
 import { useTheme } from 'next-themes'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.simplifia
 
@@ -35,20 +36,10 @@ const ProjectPage = () => {
         obtener las respuestas.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-
-      {theme === 'light' ? (
-        <img
-          src="/assets/projects/simplifia_light.png"
-          alt="project overview photo"
-          className="w-full"
-        />
-      ) : (
-        <img
-          src="/assets/projects/simplifia_dark.png"
-          alt="project overview photo"
-          className="w-full"
-        />
-      )}
+      <ProjectImage
+        src="/assets/images/simplifia_1.jpg"
+        src_dark="/assets/images/simplifia_1_dark.jpg"
+      />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

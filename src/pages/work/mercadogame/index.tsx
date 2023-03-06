@@ -2,6 +2,7 @@ import CoveredLink from '@/components/CoveredLink'
 import React from 'react'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.mercadogame
 
@@ -35,10 +36,7 @@ const ProjectPage = () => {
         aplicacion.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      <img
-        src="/assets/projects/mercadogame_1.png"
-        alt="project overview photo"
-      />
+      <ProjectImage src="/assets/images/mercadogame.jpg" />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

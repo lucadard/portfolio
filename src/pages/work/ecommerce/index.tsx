@@ -2,6 +2,7 @@ import CoveredLink from '@/components/CoveredLink'
 import React from 'react'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.ecommerce
 
@@ -33,23 +34,11 @@ const ProjectPage = () => {
         <CoveredLink text={'Render'} href={'https://render.com/'} />.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      <img
-        className="w-full"
-        src="/assets/projects/ecommerce_1.png"
-        alt="project overview photo"
-      />
+      <ProjectImage src="/assets/images/ecommerce_1.jpg" />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      <img
-        className="w-full"
-        src="/assets/projects/ecommerce_3.png"
-        alt="project overview photo"
-      />
+      <ProjectImage src="/assets/images/ecommerce_3.jpg" />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      <img
-        className="w-full"
-        src="/assets/projects/ecommerce_4.png"
-        alt="project overview photo"
-      />
+      <ProjectImage src="/assets/images/ecommerce_3.jpg" />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

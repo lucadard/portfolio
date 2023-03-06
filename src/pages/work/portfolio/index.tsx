@@ -3,11 +3,11 @@ import CoveredLink from '@/components/CoveredLink'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
 import { useTheme } from 'next-themes'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.portfolio
 
 const ProjectPage = () => {
-  const { resolvedTheme: theme } = useTheme()
   return (
     <ProjectPageLayout
       projectName={data.projectName}
@@ -32,19 +32,10 @@ const ProjectPage = () => {
         notoria.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      {theme === 'light' ? (
-        <img
-          className="w-full"
-          src="/assets/projects/portfolio_light.png"
-          alt="project overview photo"
-        />
-      ) : (
-        <img
-          className="w-full"
-          src="/assets/projects/portfolio_dark.png"
-          alt="project overview photo"
-        />
-      )}
+      <ProjectImage
+        src="/assets/images/portfolio.jpg"
+        src_dark="/assets/images/portfolio_dark.jpg"
+      />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

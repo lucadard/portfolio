@@ -3,6 +3,7 @@ import CoveredLink from '@/components/CoveredLink'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
 import { useTheme } from 'next-themes'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.todo
 
@@ -33,26 +34,10 @@ const ProjectPage = () => {
         para la funcionalidad del drag & drop.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-
-      {theme === 'light' ? (
-        <video
-          src="/assets/projects/todo_light.mp4"
-          className="w-full"
-          autoPlay
-          loop
-          muted
-          controls={false}
-        ></video>
-      ) : (
-        <video
-          src="/assets/projects/todo_dark.mp4"
-          className="w-full"
-          autoPlay
-          loop
-          muted
-          controls={false}
-        ></video>
-      )}
+      <ProjectImage
+        src="/assets/images/todo.jpg"
+        src_dark="/assets/images/todo_dark.jpg"
+      />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

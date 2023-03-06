@@ -3,6 +3,7 @@ import CoveredLink from '@/components/CoveredLink'
 import ProjectPageLayout from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
 import { useTheme } from 'next-themes'
+import ProjectImage from '@/components/ProjectImage'
 
 const data = projects.wheretowatch
 
@@ -26,25 +27,15 @@ const ProjectPage = () => {
         el espectáculo que estás buscando.
       </p>
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
-      {theme === 'light' ? (
-        <video
-          src="/assets/projects/wheretowatch_light.mp4"
-          className="w-full"
-          autoPlay
-          loop
-          muted
-          controls={false}
-        ></video>
-      ) : (
-        <video
-          src="/assets/projects/wheretowatch_dark.mp4"
-          className="w-full"
-          autoPlay
-          loop
-          muted
-          controls={false}
-        ></video>
-      )}
+      <ProjectImage
+        src="/assets/images/wtw_1.jpg"
+        src_dark="/assets/images/wtw_1_dark.jpg"
+      />
+      <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
+      <ProjectImage
+        src="/assets/images/wtw_3.jpg"
+        src_dark="/assets/images/wtw_3_dark.jpg"
+      />
       <div className="h-[1px] w-full bg-black/50 dark:bg-white/50" />
     </ProjectPageLayout>
   )

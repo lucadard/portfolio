@@ -1,3 +1,13 @@
+export type languages = 'es' | 'en'
+
+export type projectKeys =
+  | 'mercadogame'
+  | 'giphyclone'
+  | 'wheretowatch'
+  | 'ecommerce'
+  | 'simplifia'
+  | 'todo'
+
 export type TechStackItems =
   | 'javascript'
   | 'typescript'
@@ -9,15 +19,14 @@ export type TechStackItems =
 
 export type ProjectPageProps = {
   projectName: string
-  description?: string
+  description: { [key in languages]: string }
   urls: {
     page: string
     prev?: string
     next?: string
   }
-  links: { caption: string; link: string }[]
+  links: Array<{ caption: string, link: string }>
   children?: React.ReactNode
   tech: TechStackItems[]
+  // hover: { image: string }
 }
-
-

@@ -1,65 +1,40 @@
-import {
+import useMousePosition from '@/hooks/useMousePosition'
+import { projectKeys } from '@/types'
+import React, {
   createContext,
   useContext,
   ReactNode,
   useState,
   useEffect
 } from 'react'
+import { useSmoothScroll } from './SmoothScrollContext'
 
-type MouseProvider = { children: ReactNode }
+type MouseProviderType = { children: ReactNode }
 
 const MouseContext = createContext<
-  | {
-      getMouseState: MouseStates
-      setMouseHoverState: () => void
-      restoreMouseState: () => void
-    }
-  | undefined
+| {
+  mousePosition: {
+    x: number | null
+    y: number | null
+  }
+  xSkew: number
+  hoveredProject: undefined | projectKeys
+  setHoveredProject: React.Dispatch<React.SetStateAction<projectKeys | undefined>>
+}
+| undefined
 >(undefined)
 
-export type MouseStates =
-  | { type: 'default' }
-  | { type: 'hover' }
-  | { type: 'click' }
-  | { type: 'clickHover' }
-
-function MouseProvider({ children }: MouseProvider) {
-  const [mouseState, setMouseState] = useState<MouseStates>({ type: 'default' })
-
-  useEffect(() => {
-    function handleMouseDown() {
-      setMouseState((prev) => ({
-        type: prev.type === 'hover' ? 'clickHover' : 'click'
-      }))
-    }
-    function handleMouseUp() {
-      setMouseState((prev) => ({
-        type: prev.type === 'clickHover' ? 'hover' : 'default'
-      }))
-    }
-    document.addEventListener('mousedown', handleMouseDown)
-    document.addEventListener('mouseup', handleMouseUp)
-    return () => {
-      document.removeEventListener('mousedown', handleMouseDown)
-      document.removeEventListener('mouseup', handleMouseUp)
-    }
-  }, [])
-
-  const value = {
-    getMouseState: mouseState,
-    setMouseHoverState: () =>
-      setMouseState((prev) => ({
-        type: prev.type === 'click' ? 'clickHover' : 'hover'
-      })),
-    restoreMouseState: () =>
-      setMouseState((prev) => ({
-        type: prev.type === 'clickHover' ? 'click' : 'default'
-      }))
-  }
-  return <MouseContext.Provider value={value}>{children}</MouseContext.Provider>
+function MouseProvider ({ children }: MouseProviderType) {
+  const { mousePosition, xSkew } = useMousePosition()
+  const [hoveredProject, setHoveredProject] = useState<undefined | projectKeys>(undefined)
+  return (
+    <MouseContext.Provider value={{ mousePosition, xSkew, hoveredProject, setHoveredProject }}>
+      {children}
+    </MouseContext.Provider>
+  )
 }
 
-function useMouse() {
+function useMouse () {
   const context = useContext(MouseContext)
   if (context === undefined) {
     throw new Error('useMouse must be used within a MouseProvider')

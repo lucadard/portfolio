@@ -1,115 +1,82 @@
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import Logo from './Logo'
-import { usePathname } from 'next/navigation'
-import { useMouse } from '@/context/MouseContext'
-import ThemeToggler from './ThemeToggler'
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import React from 'react'
+import { useSmoothScroll } from '@/context/SmoothScrollContext'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
+import { AnimatePresence, motion } from 'framer-motion'
+import { MoonIcon, SunIcon } from '@/assets/icons/Icons'
+import { useRouter } from 'next/router'
 
-type Props = {
-  isMenuOpen: boolean
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-enum PATH_MESSAGES {
-  '/' = 'inicio',
-  '/about' = 'sobre mi',
-  '/work' = 'proyectos',
-  '/contact' = 'contacto'
-}
-
-const Message = ({ text, hide }: { text: string; hide: boolean }) => {
+export const HeaderThemeToggler = () => {
+  const { setTheme, resolvedTheme: theme } = useTheme()
   return (
-    <motion.p
-      initial={{ y: -40, opacity: 0 }}
-      animate={hide ? { y: -40, opacity: 0 } : { y: 0, opacity: 1 }}
-      exit={{ y: -40, opacity: 0 }}
-      className="uppercase font-[200] text-[20px] text-md"
-    >
-      {text}
-    </motion.p>
-  )
-}
-
-const Header = ({ isMenuOpen, setIsMenuOpen }: Props) => {
-  const { resolvedTheme: theme } = useTheme()
-  const { setMouseHoverState, restoreMouseState } = useMouse()
-  const [currentMessage, setCurrentMessage] = useState('')
-  const { scrollY } = useScroll()
-  const backgroundOpacity = useTransform(scrollY, [50, 200], [0, 0.9])
-  const path = usePathname()
-  useEffect(() => {
-    setCurrentMessage(
-      isMenuOpen ? '' : PATH_MESSAGES[path as keyof typeof PATH_MESSAGES]
-    )
-  }, [])
-  return (
-    <header
-      className="text-black dark:text-white z-[10] top-0 pt-10 pb-5 px-10 md:px-20 fixed w-screen flex flex-col justify-between dark:mix-blend-difference"
-      draggable="false"
-    >
-      <motion.div
-        className="absolute w-full left-0 top-0 -bottom-16 pointer-events-none"
-        animate={
-          !isMenuOpen && theme === 'light' ? { opacity: 1 } : { opacity: 0 }
-        }
-      >
-        <motion.div
-          style={{ opacity: backgroundOpacity }}
-          className="h-full w-full bg-gradient-to-b from-white via-white to-transparent dark:from-transparent dark:via-transparent"
-        />
-      </motion.div>
-      <div
-        id="header-content"
-        className="z-10 flex justify-between items-center"
-      >
-        <div id="content-left" className="flex gap-6 items-baseline">
-          <Link
-            href="/"
-            scroll={false}
-            className="text-3xl"
-            onMouseEnter={setMouseHoverState}
-            onMouseLeave={restoreMouseState}
+    <div className='grid place-content-center'>
+      <div onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className='relative aspect-square h-10 cursor-pointer select-none overflow-hidden'>
+        {/* <Img img={theme === 'dark' ? lightModePicture : darkModePicture} /> */}
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={theme}
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: '0%' }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{ type: 'spring', mass: 0.2, stiffness: 120 }}
+            className='relative h-full w-full select-none dark:invert'
           >
-            <Logo />
-          </Link>
-          <Message key="customMsg" text={currentMessage} hide={isMenuOpen} />
-        </div>
-        <div className="flex items-center gap-10">
-          <div className="md:block hidden">
-            <ThemeToggler isMenuOpen={isMenuOpen} />
-          </div>
-          <div
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            onMouseEnter={setMouseHoverState}
-            onMouseLeave={restoreMouseState}
-            title="Menu"
-          >
-            <MenuIcon active={isMenuOpen} />
-          </div>
-        </div>
+            {theme === 'light' ? <MoonIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' /> : <SunIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' />}
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </header>
+    </div>
+  )
+}
+export const HeaderLanguageToggler = () => {
+  const { locale } = useRouter()
+  return (
+    <a href={locale === 'en' ? '/es' : '/'}>
+      {locale === 'en' ? 'Español' : 'English'}
+    </a>
   )
 }
 
-function MenuIcon({ active = true }: { active?: boolean }) {
+interface HeaderLinkProps {
+  text: string
+  href?: string
+  scrollTo?: string
+  blank?: boolean
+}
+
+export const HeaderLink = (props: HeaderLinkProps) => {
+  const { scroll } = useSmoothScroll()
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (props.href) return
+    e.preventDefault()
+    scroll?.scrollTo(props.scrollTo!)
+  }
+
   return (
-    <div className="cursor-pointer px-1 select-none outline outline-0 flex flex-col gap-[6px] w-10 p-2">
-      <div
-        className={`h-[3px] w-full bg-apple-green origin-center transition-transform duration-500 ease-in-out 
-      ${active ? 'rotate-45 translate-y-[9px]' : ''}`}
-      />
-      <div
-        className={`h-[3px] w-full bg-apple-green transition-all duration-500 ease-in-out 
-        ${active ? 'translate-x-full opacity-0' : ''}`}
-      />
-      <div
-        className={`h-[3px] w-full bg-apple-green origin-center transition-transform duration-500 ease-in-out 
-      ${active ? '-rotate-45 -translate-y-[9px]' : ''}`}
-      />
-    </div>
+    <Link
+      className='group cursor-pointer py-2'
+      onClick={handleClick}
+      scroll={false}
+      href={props.href ?? ''}
+      target={props.blank ? '_blank' : '_self'} rel='noreferrer'
+    >
+      <div className='relative after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:w-full after:origin-right after:scale-x-0 after:bg-[linear-gradient(90deg,_transparent,_#000000_0%_100%,_transparent)] after:to-transparent after:transition-[transform] after:duration-300 after:group-hover:origin-left after:group-hover:scale-x-[1] dark:after:bg-[linear-gradient(90deg,_transparent,_#ffffff_0%_100%,_transparent)]'>
+        <p>
+          {props.text}
+        </p>
+      </div>
+    </Link>
+  )
+}
+
+const Header = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <header className='absolute inset-x-5 top-0 flex items-center justify-between py-6 uppercase md:inset-x-20'>
+      {children}
+    </header>
   )
 }
 

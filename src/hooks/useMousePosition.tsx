@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
-
+import { useEffect, useState } from 'react'
 const useMousePosition = () => {
-  const [mousePosition, setMousePosition] = React.useState({ x: null, y: null })
-  React.useEffect(() => {
+  const [mousePosition, setMousePosition] = useState<{ x: null | number, y: null | number }>({ x: null, y: null })
+  const [xSkew, setXSkew] = useState(0)
+
+  useEffect(() => {
     const updateMousePosition = (ev: any) => {
-      setMousePosition({ x: ev.clientX, y: ev.clientY })
+      setMousePosition(prev => {
+        setXSkew((prev.x ?? 0) - ev.clientX)
+        return { x: ev.clientX, y: ev.clientY }
+      })
     }
     window.addEventListener('mousemove', updateMousePosition)
     return () => {
       window.removeEventListener('mousemove', updateMousePosition)
     }
   }, [])
-  return mousePosition
+  return { mousePosition, xSkew }
 }
 export default useMousePosition

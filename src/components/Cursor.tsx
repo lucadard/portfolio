@@ -1,15 +1,14 @@
 import { useMouse } from '@/context/MouseContext'
-import useMousePosition from '@/hooks/useMousePosition'
 import { motion } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
 const Cursor = () => {
-  const mousePosition = useMousePosition()
+  const { mousePosition } = useMouse()
   const [initialMousePosition, setInitialMousePosition] = useState({
     x: 0,
     y: 0
   })
-  const { getMouseState } = useMouse()
+
   useEffect(() => {
     if (!window) return
     setInitialMousePosition({
@@ -17,54 +16,42 @@ const Cursor = () => {
       y: window.innerHeight / 2
     })
   }, [])
+
   const baseStyles = {
-    left: mousePosition.x ?? initialMousePosition.x,
-    top: mousePosition.y ?? initialMousePosition.y,
-    borderColor: '#ece7e1',
-    backgroundColor: '#ece7e1',
-    borderWidth: 1.5,
+    left: mousePosition?.x ?? initialMousePosition.x,
+    top: mousePosition?.y ?? initialMousePosition.y,
     x: '-50%',
     y: '-50%',
-    opacity: mousePosition.x === null ? 0 : 1
-  }
-  const cursor = {
-    default: {
-      ...baseStyles
-      // backgroundColor: 'rgba(0, 0, 0, 0)'
-    },
-    hover: {
-      ...baseStyles,
-      // backgroundColor: '#ece7e1',
-      scale: 3
-    },
-    clickHover: {
-      ...baseStyles,
-      // backgroundColor: '#ece7e1',
-      scale: 6
-    },
-    click: {
-      ...baseStyles,
-      // backgroundColor: 'rgba(0, 0, 0, 0)',
-      scale: 3
-    }
+    opacity: 0.5
   }
 
   return (
-    <motion.div
-      variants={cursor}
-      initial={{ opacity: 0 }}
-      animate={cursor[getMouseState.type]}
-      transition={{ type: 'spring', mass: 0.25, stiffness: 200 }}
-      className="z-[500] w-3 aspect-square fixed pointer-events-none mix-blend-difference rounded-full overflow-hidden"
-    >
+    <>
+      <style>{`
+        @keyframes rotate {
+          from {
+            rotate:0deg;
+          }
+          50%{
+            scale:1 1.5
+          }
+          to {
+            rotate:360deg;
+          }
+        }
+    `}
+      </style>
+      <div className='fixed inset-0 z-[2] h-full w-full blur-0 backdrop-blur-[200px]' />
       <motion.div
-      // variants={cursor}
-      // animate={cursor[mouseState.type]}
-      // className="w-full h-full bg-white"
-      // src={mouseState.type === 'custom' ? mouseState.image : ''}
-      // alt=""
+        animate={baseStyles}
+        style={{
+          animation: 'rotate 20s infinite',
+          transformOrigin: '0% 0%'
+        }}
+        transition={{ type: 'spring', mass: 0.6, stiffness: 50 }}
+        className='pointer-events-none fixed z-[1] aspect-square w-[550px] rounded-full bg-[linear-gradient(145deg,_#eab308_20%,_#a855f7_100%)]'
       />
-    </motion.div>
+    </>
   )
 }
 

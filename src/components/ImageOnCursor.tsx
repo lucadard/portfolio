@@ -1,7 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
-import { useEffect } from 'react'
-import { useSmoothScroll } from '@/context/SmoothScrollContext'
 import { useMouse } from '@/context/MouseContext'
 import { projectKeys } from '@/types'
 
@@ -9,7 +7,6 @@ const onHoverImages: { [key in projectKeys]: string } = {
   mercadogame: '/images/onHover/mercadogame.jpg',
   ecommerce: '/images/onHover/ecommerce.jpg',
   giphyclone: '/images/onHover/giphyclone.jpg',
-  portfolio: '/images/onHover/portfolio.jpg',
   simplifia: '/images/onHover/simplifia.jpg',
   todo: '/images/onHover/todo.jpg',
   wheretowatch: '/images/onHover/wheretowatch.jpg/'

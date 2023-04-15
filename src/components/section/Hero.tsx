@@ -60,17 +60,17 @@ const Hero = () => {
             </motion.p>
             <motion.h1
               animate={{ x: `${dragProgress * 125}%` }}
-              className={`w-min font-ibm-plex-sans text-[15vw] leading-[100%] text-stroke-black text-stroke-2 dark:text-stroke-white ${dragProgress > 0.7 ? '' : 'text-transparent'}`}
+              className='w-min font-ibm-plex-sans text-[13vw] leading-[100%] text-stroke-black text-stroke-2 dark:text-stroke-white '
               transition={{
                 type: 'spring',
                 stiffness: 120,
                 mass: 0.1
               }}
             >
-              {dragProgress > 0.7 ? 'Web' : 'Luca'}
+              <span className={`${dragProgress >= 0.7 ? '' : 'text-transparent'} duration-300`}>{dragProgress > 0.7 ? 'Web' : 'Luca'}</span>
             </motion.h1>
-            <h1 className={`font-ibm-plex-sans text-[15vw] leading-[100%] text-stroke-black dark:text-stroke-white ${dragProgress > 0.7 ? 'text-transparent text-stroke-2' : ''}`}>
-              {dragProgress > 0.7 ? 'Developer' : 'Dardenne'}
+            <h1 className={`font-ibm-plex-sans text-[14vw] leading-[100%] text-stroke-black dark:text-stroke-white ${dragProgress > 0.7 ? 'text-transparent text-stroke-2' : ''}`}>
+              <span className={`${dragProgress >= 0.7 ? 'text-transparent' : ''} duration-300`}>{dragProgress > 0.7 ? 'Developer' : 'Dardenne'}</span>
             </h1>
           </motion.div>
           <div className='flex items-center'>

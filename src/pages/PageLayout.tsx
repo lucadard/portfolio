@@ -16,7 +16,11 @@ function PageLayout ({ children, title }: LayoutProps) {
 
   useEffect(() => {
     if (!document || observer) return
-    setObserver(new ResizeObserver(() => { scroll?.stop(); scroll?.init() }).observe(
+    setObserver(new ResizeObserver(() => {
+      // scroll?.stop()
+      scroll?.destroy()
+      scroll?.init()
+    }).observe(
       document.querySelector('[data-scroll-container]')!))
     return () => {
       setObserver(null)

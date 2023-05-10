@@ -60,7 +60,7 @@ const Hero = () => {
             </motion.p>
             <motion.h1
               animate={{ x: `${dragProgress * 125}%` }}
-              className='w-min font-ibm-plex-sans text-[13vw] leading-[100%] text-stroke-black text-stroke-2 dark:text-stroke-white '
+              className='w-min font-ibm-plex-sans text-[13vw] font-bold leading-[100%] text-stroke-black text-stroke-2 dark:text-stroke-white '
               transition={{
                 type: 'spring',
                 stiffness: 120,
@@ -69,7 +69,7 @@ const Hero = () => {
             >
               <span className={`${dragProgress >= 0.7 ? '' : 'text-transparent'} duration-300`}>{dragProgress > 0.7 ? 'Web' : 'Luca'}</span>
             </motion.h1>
-            <h1 className={`font-ibm-plex-sans text-[14vw] leading-[100%] text-stroke-black dark:text-stroke-white ${dragProgress > 0.7 ? 'text-transparent text-stroke-2' : ''}`}>
+            <h1 className={`font-ibm-plex-sans text-[14vw] font-bold leading-[100%] text-stroke-black dark:text-stroke-white ${dragProgress > 0.7 ? 'text-transparent text-stroke-2' : ''}`}>
               <span className={`${dragProgress >= 0.7 ? 'text-transparent' : ''} duration-300`}>{dragProgress > 0.7 ? 'Developer' : 'Dardenne'}</span>
             </h1>
           </motion.div>
@@ -81,7 +81,7 @@ const Hero = () => {
       </div>
       <div className='block pt-[20vh] pb-[10vh] text-center md:hidden'>
         <h1
-          className='text-[70px] font-[700] leading-[100%] text-transparent text-stroke-black dark:text-stroke-white'
+          className='text-[max(16vw,60px)] font-[700] leading-[100%] text-transparent text-stroke-black dark:text-stroke-white'
           style={{ WebkitTextStrokeWidth: '1px' }}
         >Luca
           <p className='text-black text-stroke-0 dark:text-white'>

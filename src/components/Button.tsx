@@ -14,7 +14,7 @@ const Button = ({ text, bgColor = 'bg-black dark:bg-white', linkIcon = false }: 
       <div className='absolute top-full flex w-full justify-center'>
         <div className='aspect-square h-32 rounded-full bg-white transition-all duration-1000 group-hover:scale-[6] dark:bg-black' />
       </div>
-      <p className='transition-color relative flex items-center whitespace-nowrap px-4 text-black invert delay-300 duration-300 group-hover:invert-0 dark:invert-0 dark:group-hover:invert md:px-8 md:py-2'>
+      <p className='transition-color relative flex items-center whitespace-nowrap px-4 text-[15px] leading-[1.5] text-black invert delay-300 duration-300 group-hover:invert-0 dark:invert-0 dark:group-hover:invert sm:text-[max(1vw,15px)] md:px-8 md:py-2'>
         {text}
         <LinkIcon responsive className={`${linkIcon ? 'transition-transform duration-500 group-hover:-rotate-45' : 'pointer-events-none w-0 opacity-0'}`} />
       </p>

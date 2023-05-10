@@ -12,7 +12,7 @@ const Footer = () => {
       </div>
       <p className='col-span-full row-start-2 justify-self-center lg:col-span-1 lg:col-start-2 lg:row-start-1'>2023 - Luca Dardenne</p>
       <div className='col-start-2 flex items-center justify-self-end whitespace-nowrap text-end lg:col-start-3 lg:gap-10'>
-        <HeaderLink text={locale === 'es' ? 'ir arriba' : 'back to top'} scrollTo='#top' />
+        <HeaderLink text={locale === 'es' ? 'volver arriba' : 'back to top'} scrollTo='#top' />
       </div>
     </footer>
   )

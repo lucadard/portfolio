@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable @typescript-eslint/promise-function-async */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import React from 'react'
 import { useSmoothScroll } from '@/context/SmoothScrollContext'
 import { useTheme } from 'next-themes'
@@ -14,7 +11,6 @@ export const HeaderThemeToggler = () => {
   return (
     <div className='grid place-content-center'>
       <div onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className='relative aspect-square h-10 cursor-pointer select-none overflow-hidden'>
-        {/* <Img img={theme === 'dark' ? lightModePicture : darkModePicture} /> */}
         <AnimatePresence mode='wait'>
           <motion.div
             key={theme}
@@ -24,7 +20,9 @@ export const HeaderThemeToggler = () => {
             transition={{ type: 'spring', mass: 0.2, stiffness: 120 }}
             className='relative h-full w-full select-none dark:invert'
           >
-            {theme === 'light' ? <MoonIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' /> : <SunIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' />}
+            {theme === 'light'
+              ? <MoonIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' />
+              : <SunIcon height='100%' width='100%' className='scale-[0.7] md:scale-100' />}
           </motion.div>
         </AnimatePresence>
       </div>

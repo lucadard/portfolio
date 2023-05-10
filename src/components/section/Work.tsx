@@ -24,6 +24,7 @@ const links = Object.entries(projects).map(
 const Work = () => {
   const { locale } = useRouter()
   const { setHoveredProject } = useMouse()
+
   return (
     <motion.section
       variants={{
@@ -33,7 +34,6 @@ const Work = () => {
           transition: { staggerChildren: 0.1, delayChildren: 0 }
         }
       }}
-      className='pt-[50px] md:pt-[200px]'
     >
       <h2
         className='p-2 uppercase'
@@ -55,9 +55,9 @@ const Work = () => {
               <motion.li
                 variants={itemVariants}
                 transition={transition}
-                className='group border-b border-black/30 py-6 hover:text-black/60 dark:border-white/30 dark:hover:text-white/60 md:py-12'
+                className='group border-b border-black/30 py-6 hover:text-black/60 dark:border-white/30 dark:hover:text-white/60 md:py-6'
               >
-                <p className='text-4xl font-[400] leading-[100%] md:text-[100px]'>
+                <p className='font-ibm-plex-sans text-8xl font-thin uppercase leading-[100%] md:text-[max(7.2vw,60px)]'>
                   {projectName}
                 </p>
                 {description[locale as languages] &&

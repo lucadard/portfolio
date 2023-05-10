@@ -35,11 +35,11 @@ const Contact = () => {
       <div className='flex h-full flex-1 flex-col items-center justify-center gap-5 overflow-hidden md:items-start'>
         <motion.p
           variants={paragraphVariants}
-          className='items-right inline-block select-none text-center font-ibm-plex-sans text-[60px] uppercase leading-[100%] text-stroke-black text-stroke-2 hover:text-transparent dark:text-stroke-white md:text-left md:text-[max(10vw)]'
+          className='items-right inline-block select-none text-center font-ibm-plex-sans text-[60px] font-medium uppercase leading-[100%] md:text-left md:text-[max(10vw)]'
         >
           Contact{locale === 'es' ? 'a' : ' '}
           <span className='md:hidden'>{locale === 'es' ? ' ' : ''}</span>
-          me!
+          me
         </motion.p>
         <a href='mailto:lucadardenne@hotmail.com' target='_blank' rel='noreferrer' className='md:mx-0'>
           <Button text={locale === 'es' ? 'Enviame un email' : 'Send me an email'} />

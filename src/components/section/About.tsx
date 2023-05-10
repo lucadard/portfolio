@@ -21,7 +21,7 @@ const paragraphs = {
       <CoveredLink text={favouriteTech[0].name} href={favouriteTech[0].link} /> que
       disfruta creando aplicaciones web interactivas y dinámicas.
     </p>,
-    <p className='text-[15px] leading-[1.5] md:text-[max(1.3vw,_18px)]'>
+    <p className='text-[15px] leading-[1.5] sm:text-[max(1.6vw,20px)]'>
       Me apasiona experimentar con nuevas herramientas y tecnologías, algunas de
       mis preferidas son{' '}
       {favouriteTech.slice(1).map((item, i, { length: l }) => (
@@ -43,12 +43,12 @@ const paragraphs = {
     </Link>
   ],
   en: [
-    <p className='text-[18px] font-[500] leading-[1.4] md:text-[max(2.2vw)]'>
-      Autodidact web developer who likes {' '}
+    <p className='text-[18px] font-[500] leading-[1.4] sm:text-[max(2.7vw,32px)]'>
+      Autodidact web developer who likes{' '}
       <CoveredLink text={favouriteTech[0].name} href={favouriteTech[0].link} /> and
       enjoys creating interactive and dynamic web applications.
     </p>,
-    <p className='text-[15px] leading-[1.5] md:text-[max(1.3vw,_18px)]'>
+    <p className='text-[15px] leading-[1.5] sm:text-[max(1.6vw,20px)]'>
       I am passionate about experimenting with new tools and technologies, some of my favorites are{' '}
       {favouriteTech.slice(1).map((item, i, { length: l }) => (
         <span key={item.name}>
@@ -83,7 +83,7 @@ const About = () => {
       className='md:grid md:grid-cols-2'
     >
       <motion.div
-        className='relative col-start-2 flex flex-col gap-10'
+        className='relative col-start-2 flex flex-col gap-10 pb-[80px] md:max-w-[80%] md:pb-[20vh]'
       >
         {paragraphs[locale as keyof typeof paragraphs].map((paragraph, i) => (
           <motion.div

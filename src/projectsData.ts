@@ -4,7 +4,7 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
   mercadogame: {
     projectName: 'Mercado Game',
     description: {
-      es: 'Mini-juego utilizando la API de MercadoLibre.',
+      es: 'Mini-juego utilizando la API de MercadoLibre',
       en: ''
     },
     urls: {
@@ -26,13 +26,13 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
   wheretowatch: {
     projectName: 'Where to Watch',
     description: {
-      es: 'Te muestra donde podés encontrar tu show favorito.',
+      es: 'Te muestra donde podés encontrar tu show favorito',
       en: ''
     },
     urls: {
       page: '/work/wheretowatch',
       prev: '/work/mercadogame',
-      next: '/work/ecommerce'
+      next: '/work/gitcord'
     },
     tech: ['javascript', 'react', 'tailwind'],
     links: [
@@ -46,15 +46,38 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
       }
     ]
   },
+  gitcord: {
+    projectName: 'Gitcord',
+    description: {
+      es: 'Chatea con usuarios de Github',
+      en: ''
+    },
+    urls: {
+      page: '/work/gitcord',
+      prev: '/work/wheretowatch',
+      next: '/work/ecommerce'
+    },
+    tech: ['react', 'nextjs', 'tailwind', 'typescript', 'firebase'],
+    links: [
+      {
+        caption: 'Repo',
+        link: 'https://github.com/lucadard/chat'
+      },
+      {
+        caption: 'Website',
+        link: 'https://git-cord.vercel.app/'
+      }
+    ]
+  },
   ecommerce: {
     projectName: 'Ecommerce',
     description: {
-      es: 'Un simple ecommerce. Tanto backend como frontend.',
+      es: 'Un simple ecommerce. Tanto backend como frontend',
       en: ''
     },
     urls: {
       page: '/work/ecommerce',
-      prev: '/work/wheretowatch',
+      prev: '/work/gitcord',
       next: '/work/giphyclone'
     },
     tech: ['javascript', 'typescript', 'node', 'react', 'tailwind', 'mongodb'],
@@ -80,7 +103,7 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
   giphyclone: {
     projectName: 'Giphy Clone',
     description: {
-      es: 'Clon de la web app de GIPHY.',
+      es: 'Clon de la web app de GIPHY',
       en: ''
     },
     urls: {
@@ -100,33 +123,10 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
       }
     ]
   },
-  simplifia: {
-    projectName: 'Simplif-IA',
-    description: {
-      es: 'Clon de ChatGPT con su propia funcionalidad.',
-      en: ''
-    },
-    urls: {
-      page: '/work/simplifia',
-      prev: '/work/giphyclone',
-      next: '/work/todo'
-    },
-    tech: ['typescript', 'react', 'nextjs', 'tailwind'],
-    links: [
-      // {
-      //   caption: 'Repo',
-      //   link: 'https://github.com/lucadard/portfolio-next'
-      // },
-      {
-        caption: 'Website',
-        link: 'https://simplif-ia.vercel.app/'
-      }
-    ]
-  },
   todo: {
     projectName: 'Todo App',
     description: {
-      es: 'Una lista de tareas.',
+      es: 'Una lista de tareas',
       en: ''
     },
     urls: {
@@ -143,6 +143,29 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
       {
         caption: 'Website',
         link: 'https://frontendmentor-todoapp.netlify.app/'
+      }
+    ]
+  },
+  simplifia: {
+    projectName: 'Simplif-IA',
+    description: {
+      es: 'Clon de ChatGPT con su propia funcionalidad',
+      en: ''
+    },
+    urls: {
+      page: '/work/simplifia',
+      prev: '/work/giphyclone',
+      next: '/work/todo'
+    },
+    tech: ['typescript', 'react', 'nextjs', 'tailwind'],
+    links: [
+      // {
+      //   caption: 'Repo',
+      //   link: 'https://github.com/lucadard/portfolio-next'
+      // },
+      {
+        caption: 'Website',
+        link: 'https://simplif-ia.vercel.app/'
       }
     ]
   }

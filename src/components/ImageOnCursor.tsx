@@ -4,12 +4,13 @@ import { useMouse } from '@/context/MouseContext'
 import { projectKeys } from '@/types'
 
 const onHoverImages: { [key in projectKeys]: string } = {
-  mercadogame: '/images/onHover/mercadogame.jpg',
-  ecommerce: '/images/onHover/ecommerce.jpg',
-  giphyclone: '/images/onHover/giphyclone.jpg',
-  simplifia: '/images/onHover/simplifia.jpg',
-  todo: '/images/onHover/todo.jpg',
-  wheretowatch: '/images/onHover/wheretowatch.jpg/'
+  mercadogame: '/images/onHover/mercadogame.webp',
+  ecommerce: '/images/onHover/ecommerce.webp',
+  giphyclone: '/images/onHover/giphyclone.webp',
+  simplifia: '/images/onHover/simplifia.webp',
+  todo: '/images/onHover/todo.webp',
+  wheretowatch: '/images/onHover/wheretowatch.webp',
+  gitcord: '/images/onHover/gitcord.webp'
 }
 
 const ImageOnCursor = () => {

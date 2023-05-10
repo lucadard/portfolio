@@ -7,6 +7,7 @@ export type projectKeys =
   | 'ecommerce'
   | 'simplifia'
   | 'todo'
+  | 'gitcord'
 
 export type TechStackItems =
   | 'javascript'
@@ -16,6 +17,7 @@ export type TechStackItems =
   | 'tailwind'
   | 'node'
   | 'mongodb'
+  | 'firebase'
 
 export type ProjectPageProps = {
   projectName: string
@@ -28,5 +30,6 @@ export type ProjectPageProps = {
   links: Array<{ caption: string, link: string }>
   children?: React.ReactNode
   tech: TechStackItems[]
+  locale?: string
   // hover: { image: string }
 }

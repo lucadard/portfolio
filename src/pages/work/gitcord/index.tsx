@@ -1,30 +1,29 @@
 /* eslint-disable react/jsx-key */
-import React from 'react'
 import CoveredLink from '@/components/CoveredLink'
+import React from 'react'
 import ProjectPageLayout, { ProjectPageImage, ProjectPageParagraphContainer } from '../ProjectPageLayout'
 import { projects } from '../../../projectsData'
-import ProjectImage from '@/components/ProjectImage'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-const data = projects.wheretowatch
+const data = projects.gitcord
 
 const paragraphs = {
   es: [
     <ProjectPageParagraphContainer>
       <p>
-        Es una herramienta que utiliza la API de{' '}
-        <CoveredLink text='TMDB' href='https://www.themoviedb.org/documentation/api' />{' '}
-        para buscar en qué plataforma de streaming se encuentra disponible
-        el espectáculo que estás buscando.
+        Es una aplicación similar a{' '}
+        <CoveredLink text='Discord' href='https://discord.com/' /> donde
+        utilizas tu usuario de Github.
       </p>
     </ProjectPageParagraphContainer>
   ],
   en: [
     <ProjectPageParagraphContainer>
       <p>
-        Tool that uses the <CoveredLink text='TMDB' href='https://www.themoviedb.org/documentation/api' />{' '}
-        API to search on which streaming platform is available the show you are looking for.
+        It is an application similar to{' '}
+        <CoveredLink text='Discord' href='https://discord.com/' />{' '}
+        where you use your Github user to chat.
       </p>
     </ProjectPageParagraphContainer>
   ]
@@ -37,28 +36,26 @@ const ProjectPage = () => {
       <Head>
         <link
           rel='preload'
-          href='/images/wheretowatch_light.webp'
+          href='/images/gitcord_light.webp'
           as='image'
         />
         <link
           rel='preload'
-          href='/images/wheretowatch_dark.webp'
+          href='/images/gitcord_dark.webp'
           as='image'
         />
       </Head>
       <ProjectPageLayout
         projectName={data.projectName}
         urls={data.urls}
-        links={data.links}
         tech={data.tech}
+        links={data.links}
         locale={locale}
       >
         {paragraphs[locale as keyof typeof paragraphs][0]}
-        <ProjectPageImage src='/images/wheretowatch_light.webp' darkSrc='/images/wheretowatch_dark.webp' />
-
+        <ProjectPageImage src='/images/gitcord_light.webp' darkSrc='/images/gitcord_dark.webp' />
       </ProjectPageLayout>
     </>
-
   )
 }
 

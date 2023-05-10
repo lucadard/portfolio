@@ -22,7 +22,8 @@ const techStackIcons: {
   react: { src: <logos.IconReact fill='#04d1f2' />, title: 'ReactJS' },
   tailwind: { src: <logos.IconTailwindcss fill='#09adc9' />, title: 'TailwindCSS' },
   node: { src: <logos.IconNodejs color='#88bb3d' />, title: 'NodeJS' },
-  mongodb: { src: <logos.IconMongodb fill='#0e8539' />, title: 'MongoDB' }
+  mongodb: { src: <logos.IconMongodb fill='#0e8539' />, title: 'MongoDB' },
+  firebase: { src: <logos.IconFirebase fill='#ffca28' />, title: 'Firebase' }
 }
 
 export const ProjectPageImage = ({ src, darkSrc, alt = '' }: { src: string, darkSrc?: string, alt?: string }) => {
@@ -56,12 +57,13 @@ const ProjectPageLayout = ({
   urls,
   children,
   tech = [],
-  links = []
+  links = [],
+  locale = 'en'
 }: Omit<ProjectPageProps, 'description'>) => {
   return (
     <PageLayout title={projectName + ' | Luca Dardenne'}>
       <Header>
-        <HeaderLink text='volver al inicio' href='/' />
+        <HeaderLink text={locale === 'es' ? 'volver al inicio' : 'back to home'} href='/' />
         <HeaderThemeToggler />
       </Header>
       {/* content */}
@@ -100,7 +102,7 @@ const ProjectPageLayout = ({
         </div>
       </main>
       <div className='flex justify-end px-5 text-end text-[max(4vw,_20px)] font-[500] leading-[100%] md:px-20'>
-        <HeaderLink text='Siguiente Proyecto' href={urls.next} />
+        <HeaderLink text={locale === 'es' ? 'Siguiente Proyecto' : 'Next Project'} href={urls.next} />
         {/* <p className='text-[max(4vw,_50px)] leading-[1] lg:place-self-end'>Siguiente Proyecto</p> */}
       </div>
       <div className='mx-5 mt-10 md:mx-20 md:mt-20'>

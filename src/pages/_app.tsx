@@ -19,7 +19,7 @@ const inter = Inter({
   display: 'swap'
 })
 const ibmPlexSans = IBM_Plex_Sans({
-  weight: ['700'],
+  weight: ['300', '400', '500', '700'],
   subsets: ['latin'],
   variable: '--font-ibm-plex-sans',
   display: 'swap'

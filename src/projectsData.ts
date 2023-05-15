@@ -15,11 +15,11 @@ export const projects: { [key in projectKeys]: ProjectPageProps } = {
     links: [
       {
         caption: 'Repo',
-        link: 'https://github.com/lucadard/question-game-mercadolibre'
+        link: 'https://github.com/lucadard/mercadogame-w-serveractions'
       },
       {
         caption: 'Website',
-        link: 'https://mercadogame.vercel.app/'
+        link: 'https://mercadogame-13-lucadard.vercel.app/'
       }
     ]
   },
